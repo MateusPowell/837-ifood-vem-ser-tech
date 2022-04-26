@@ -5,7 +5,7 @@ export function TodoListItem({ id, text, checked, updateChecked }) {
 
     function changeCheckboxValue() {
         setCheckedState(!checkedState);
-        updateChecked(id, !checkedState)
+        updateChecked(id, !checkedState);
     }
 
     return (

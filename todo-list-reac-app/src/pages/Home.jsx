@@ -18,23 +18,27 @@ export function Home() {
       },
       { id: 4, text: "Lavar o carro todo", checked: true },
     ];
-    console.log(localStorage.getItem("itemsArray"));
     const storedArray = localStorage.getItem("itemsArray");
-    if (storedArray != null) {
+    
+    if (storedArray == null) {
       array = JSON.parse.storedArray;
     } else {
       const itemsArrayString = JSON.stringify(array);
       localStorage.setItem("itemsArray", itemsArrayString);
-    }
+    }   
+    return array;
   });
 
   function updateChecked(id, checked) {
     const buscaIndex = itemsArray.findIndex((item) => {
       return item.id === id;
     });
+    
+    console.log(itemsArray)
     itemsArray[buscaIndex].checked = checked;
-    setItemsArray(JSON.stringify.storedArray);
+    localStorage.setItem("itemsArray", JSON.stringify(itemsArray));
   }
+
   return (
     <div className="container">
       {itemsArray?.map(({ id, text, checked }) => {
@@ -51,3 +55,4 @@ export function Home() {
     </div>
   );
 }
+
